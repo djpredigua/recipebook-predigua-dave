@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ recipe.name }}</title>
+</head>
+<body>
+    <h1>Recipe Book</h1>
+    <h2>{{ recipe.name }}</h2>
+    <ul>
+        {% for recipe_ingredient in ingredients %}
+        <li>{{ recipe_ingredient.quantity }} {{ recipe_ingredient.ingredient.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="http://localhost:8000/recipes/list/">View Recipe List</a>
+</body>
+</html>

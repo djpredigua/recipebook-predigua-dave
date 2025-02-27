@@ -10,20 +10,20 @@
     </head>
 
     
-        <body>
-            <h1>Recipe Book</h1>
+    <body>
+        <h1>Recipe Book</h1>
+        <ul>
+            {% for recipe in recipes %}
+            <li>
+            <h2>{{ recipe.name }}</h2>
             <ul>
-                {% for recipe in recipes %}
-                <li>
-                    <h2>{{ recipe.name }}</h2>
-                    <ul>
-                        {% for ingredient in recipe.ingredients %}
-                        <li>{{ ingredient.quantity }} {{ ingredient.name }}</li>
-                        {% endfor %}
-                    </ul>
-                    <a href="{{ recipe.link }}">View Recipe</a>
-                </li>
+                {% for recipe_ingredient in recipe.ingredients.all %}
+                <li>{{ recipe_ingredient.quantity }} {{ recipe_ingredient.ingredient.name }}</li>
                 {% endfor %}
             </ul>
-        </body>
+            <a href="{% url 'recipe_detail' pk=recipe.pk %}">View Recipe</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </body>
 </html>
