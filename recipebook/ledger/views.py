@@ -9,3 +9,4 @@ class RecipeListView(ListView):
 class RecipeDetailView(DetailView):
     model = Recipe
     template_name = 'recipe_detail.html'
+    context_object_name = 'recipe'
