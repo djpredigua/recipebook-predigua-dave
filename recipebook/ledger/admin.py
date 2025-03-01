@@ -2,11 +2,11 @@ from django.contrib import admin
 from .models import RecipeIngredient, Recipe
 
 # Register your models here.
-class RecipeGroupAdmin(admin.ModelAdmin):
+class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
 
-class RecipeAdmin(admin.ModelAdmin):
+class IngredientAdmin(admin.ModelAdmin):
     model = RecipeIngredient
 
-admin.site.register(Recipe, RecipeGroupAdmin)
-admin.site.register(RecipeIngredient, RecipeAdmin)
+admin.site.register(Recipe, RecipeAdmin)
+admin.site.register(RecipeIngredient, IngredientAdmin)
