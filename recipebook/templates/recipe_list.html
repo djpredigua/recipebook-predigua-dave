@@ -7,21 +7,14 @@
                 font-family: 'Arial', sans-serif;
             }
         </style>
-    </head>=
+    </head>
     <body>
-        <h1>Recipe Book</h1>
+        <h1>{{ recipe.name }}</h1>
         <ul>
-            {% for recipe in recipes %}
-            <li>
-            <h2>{{ recipe.name }}</h2>
-                <ul>
-                    {% for recipe_ingredient in recipe.recipeingredient_set.all %}
-                    <li>{{ recipe_ingredient.quantity }} {{ recipe_ingredient.ingredient.name }}</li>
-                    {% endfor %}
-                </ul>
-            <a href="{% url 'recipe_detail' recipe.pk %}">View Recipe</a>
+            {% for recipe in object_list %}
+            <a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a>
             </li>
-        {% endfor %}
+            {% endfor %}
         </ul>
     </body>
 </html>
