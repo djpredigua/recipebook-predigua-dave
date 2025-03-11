@@ -12,7 +12,7 @@ class RecipeIngredientInline(admin.TabularInline):
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ("name", "author", "created_on", "updated_on")
     inlines = [RecipeIngredientInline]
-    search_fields = ("name", "author__username")
+    search_fields = ("name", "author_username")
     list_filter = ("created_on", "updated_on")
 
 # Admin for Ingredient
@@ -27,7 +27,7 @@ class ProfileInline(admin.StackedInline):
     verbose_name_plural = "Profiles"
 
 class CustomUserAdmin(BaseUserAdmin):
-    inline = [ProfileInline]
+    inlines = [ProfileInline]
 
 
 admin.site.register(Recipe, RecipeAdmin)
