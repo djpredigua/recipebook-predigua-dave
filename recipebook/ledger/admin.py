@@ -1,18 +1,18 @@
 from django.contrib import admin
-from .models import RecipeIngredient, Recipe, Ingredient, Profile
+from .models import Recipe, RecipeIngredient, Ingredient, Profile
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 
 # Register your models here.
-class RecipeIngredientLine(admin.TabularInline):
+class RecipeIngredientInline(admin.TabularInline):
     model = RecipeIngredient
     extra = 1
 
 # Admin for Recipe
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ("name", "author", "created_on", "updated on")
-    inlines = [RecipeIngredientLine]
-    search_fields = ("name", "author_username")
+    list_display = ("name", "author", "created_on", "updated_on")
+    inlines = [RecipeIngredientInline]
+    search_fields = ("name", "author__username")
     list_filter = ("created_on", "updated_on")
 
 # Admin for Ingredient
