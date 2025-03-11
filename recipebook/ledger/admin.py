@@ -32,5 +32,5 @@ class CustomUserAdmin(BaseUserAdmin):
 
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(Ingredient, IngredientAdmin)
-admin.site.register(User)
+admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
