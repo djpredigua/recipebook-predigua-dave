@@ -5,7 +5,7 @@ from django.utils.timezone import now
 
 
 class Ingredient(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     
     def __str__(self):
         return self.name
@@ -36,7 +36,7 @@ class RecipeIngredient(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    short_bio = models.TextField()
+    short_bio = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
