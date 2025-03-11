@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.utils.timezone import now
 
 
 class Ingredient(models.Model):
@@ -29,8 +28,8 @@ class Recipe(models.Model):
 
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=100)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name = "recipe")
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name = "ingredients")
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name="recipe")
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="ingredients")
     
 
 class Profile(models.Model):

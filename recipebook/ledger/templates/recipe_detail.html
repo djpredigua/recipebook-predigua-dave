@@ -3,7 +3,7 @@
 
 {% block content %}
 
-{&if user.is_authenticated &}
+{% if user.is_authenticated %}
 
     <h2>{{ recipe.name }}</h2>
     <p><strong>Author:</strong> {{ recipe.author }}</p>
