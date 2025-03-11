@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Recipe Book</title>
-        <style>
-            body {
-                font-family: 'Arial', sans-serif;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>{{ recipe.name }}</h1>
-        <ul>
-            {% for recipe in object_list %}
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>{{ recipe.name }}</h1>
+<ul>
+    {% for recipe in object_list %}
+        <li>
             <a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a>
-            </li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

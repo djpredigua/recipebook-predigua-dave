@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>{{ recipe.name }}</title>
-</head>
-<body>
-    <h1>Recipe Book</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{&if user.is_authenticated &}
+
     <h2>{{ recipe.name }}</h2>
+    <p><strong>Author:</strong> {{ recipe.author }}</p>
+    <p><strong>Created on:</strong> {{ recipe.created_on|date:"F d, Y H:i" }}</p>
+    <p><strong>Last updated:</strong> {{ recipe.updated_on|date:"F d, Y H:i" }}</p>
+
     <ul>
         {% for ingredient in recipe.ingredients.all %}
         <li>
@@ -13,5 +18,9 @@
         </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+
+{% else %}
+    <p>Please login first to view the recipe.</p>
+{% endif %}
+
+{% endblock %}
