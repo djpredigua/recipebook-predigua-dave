@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Recipe, RecipeIngredient, Ingredient, Profile
+from .models import Recipe, RecipeIngredient, Ingredient, Profile, RecipeImage
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 
@@ -29,6 +29,8 @@ class ProfileInline(admin.StackedInline):
 class CustomUserAdmin(BaseUserAdmin):
     inlines = [ProfileInline]
 
+class RecipeImageInline(admin.TabularInline):
+    model = RecipeImage
 
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(Ingredient, IngredientAdmin)
