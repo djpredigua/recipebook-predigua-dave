@@ -10,7 +10,7 @@ class RecipeIngredientInline(admin.TabularInline):
 
 class RecipeImageInline(admin.TabularInline):
     model = RecipeImage
-    
+
 # Admin for Recipe
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ("name", "author", "created_on", "updated_on")
@@ -31,7 +31,6 @@ class ProfileInline(admin.StackedInline):
 
 class CustomUserAdmin(BaseUserAdmin):
     inlines = [ProfileInline]
-
 
 
 admin.site.register(Recipe, RecipeAdmin)
