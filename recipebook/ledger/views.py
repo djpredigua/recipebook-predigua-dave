@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import get_object_or_404
 
 from .models import Recipe, RecipeImage
 from .forms import RecipeForm, RecipeImageForm
@@ -19,7 +19,7 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
     template_name = "recipe_form.html"
-    success_url = reverse_lazy("ledger:recipe_list")
+    success_url = reverse("ledger:recipe_list")
 
 class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     model = RecipeImage
@@ -32,7 +32,7 @@ class RecipeImageCreateView(LoginRequiredMixin, CreateView):
         return super().form_invalid(form)
     
     def get_success_url(self):
-        return reverse_lazy("ledger:recipe_detail", kwargs={"pk": self.kwargs["pk"]})
+        return reverse("ledger:recipe_detail", kwargs={"pk": self.kwargs["pk"]})
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
