@@ -6,7 +6,7 @@
 
     <h1>{{ recipe.name }}</h1>
     <h2>
-        <a href="{% url 'ledger:add_recipe' %}"
+        <a href="{% url 'ledger:add_recipe' %}">Add New Recipe</a>
     </h2>
     <ul>
         {% for recipe in object_list %}

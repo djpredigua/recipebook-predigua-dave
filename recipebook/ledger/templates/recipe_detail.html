@@ -18,17 +18,19 @@
             {% endfor %}
         </ul>
 
+        <h3>Images</h3>
         <p>
             {% for image in recipe.images.all %}
                 <img src="{{ image.image.url }}", alt="{{ image.description }}", width="250">
+                <p>{{ image.description }}</p>
             {% endfor %}
         </p>
         <p>
-            <a href="{% url 'ledger:add_recipe_image' recipe.pk %}">Upload Image</a>
+            <a href="{% url 'ledger:add_recipe_image' pk=recipe.pk %}">Upload Image</a>
         </p>
-        <li>
+        <p>
             <a href="{% url 'ledger:recipe_list' %}">Back to Recipe List</a>
-        </li>
+        </p>
     {% else %}
         <p>Please login first to view the recipe.</p>
     {% endif %}
