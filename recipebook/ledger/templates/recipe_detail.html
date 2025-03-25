@@ -3,23 +3,34 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
+    {% if user.is_authenticated %}
 
-    <h2>{{ recipe.name }}</h2>
-    <p><strong>Author:</strong> {{ recipe.author }}</p>
-    <p><strong>Created on:</strong> {{ recipe.created_on|date:"F d, Y H:i" }}</p>
-    <p><strong>Last updated:</strong> {{ recipe.updated_on|date:"F d, Y H:i" }}</p>
+        <h2>{{ recipe.name }}</h2>
+        <p><strong>Author:</strong> {{ recipe.author }}</p>
+        <p><strong>Created on:</strong> {{ recipe.created_on|date:"F d, Y H:i" }}</p>
+        <p><strong>Last updated:</strong> {{ recipe.updated_on|date:"F d, Y H:i" }}</p>
 
-    <ul>
-        {% for ingredient in recipe.ingredients.all %}
+        <ul>
+            {% for ingredient in recipe.ingredients.all %}
+            <li>
+                {{ ingredient.ingredient.name }} - {{ ingredient.quantity }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <p>
+            {% for image in recipe.images.all %}
+                <img src="{{ image.image.url }}", alt="{{ image.description }}", width="250">
+            {% endfor %}
+        </p>
+        <p>
+            <a href="{% url 'ledger:recipe-add-image' recipe.pk %}">Upload Image</a>
+        </p>
         <li>
-            {{ ingredient.ingredient.name }} - {{ ingredient.quantity }}
+            <a href="{% url 'ledger:recipe_list' %}">Back to List</a>
         </li>
-        {% endfor %}
-    </ul>
-
-{% else %}
-    <p>Please login first to view the recipe.</p>
-{% endif %}
+    {% else %}
+        <p>Please login first to view the recipe.</p>
+    {% endif %}
 
 {% endblock %}
