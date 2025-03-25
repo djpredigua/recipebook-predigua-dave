@@ -4,13 +4,16 @@
 
 {% block content %}
 
-<h1>{{ recipe.name }}</h1>
-<ul>
-    {% for recipe in object_list %}
-        <li>
-            <a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a>
-        </li>
-    {% endfor %}
-</ul>
+    <h1>{{ recipe.name }}</h1>
+    <h2>
+        <a href="{% url 'ledger:add_recipe' %}"
+    </h2>
+    <ul>
+        {% for recipe in object_list %}
+            <li>
+                <a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
