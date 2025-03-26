@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-
+from django.utils.timezone import now
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -15,7 +15,7 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
@@ -42,7 +42,7 @@ class Profile(models.Model):
     
 class RecipeImage(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="images")
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True)
     image = models.ImageField(upload_to="images/", null=True)
 
     def __str__(self):

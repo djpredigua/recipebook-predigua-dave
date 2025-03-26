@@ -35,5 +35,5 @@ class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["recipe"] = get_object_or_404(Recipe, pk=self.kwargs["pk"])
+        context["recipe"] = Recipe.objects.get(pk=self.kwargs["pk"])
         return context 

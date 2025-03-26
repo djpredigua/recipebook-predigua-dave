@@ -16,7 +16,7 @@ class RecipeImageInline(admin.TabularInline):
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ("name", "author", "created_on", "updated_on")
     inlines = [RecipeIngredientInline, RecipeImageInline]
-    search_fields = ("name", "author_username")
+    search_fields = ("name", "author__username")
     list_filter = ("created_on", "updated_on")
 
 # Admin for Ingredient
